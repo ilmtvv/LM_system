@@ -1,8 +1,5 @@
-from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework.generics import ListAPIView
-
-
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from materials.models import Course, Lesson
 from materials.serializers import CourseSerializer, LessonSerializer
 
@@ -17,6 +14,21 @@ class LessonListAPIView(ListAPIView):
     queryset = Lesson.objects.all()
 
 
-# class CourseListAPIView(ListAPIView):
-#     serializer_class = CourseSerializer
-#     queryset = Course.objects.all()
+class LessonRetrieveAPIView(RetrieveAPIView):
+    serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
+
+
+class LessonCreateAPIView(CreateAPIView):
+    serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
+
+
+class LessonUpdateAPIView(UpdateAPIView):
+    serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
+
+
+class LessonDestroyAPIView(DestroyAPIView):
+    serializer_class = LessonSerializer
+    queryset = Lesson.objects.all()
