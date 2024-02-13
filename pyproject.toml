@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "lms-system"
+name = "lms"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
@@ -11,6 +11,7 @@ django = "4.2"
 psycopg2-binary = "^2.9.9"
 python-dotenv = "^1.0.1"
 djangorestframework = "^3.14.0"
+pillow = "^10.2.0"
 
 
 [build-system]

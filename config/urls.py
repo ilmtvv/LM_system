@@ -23,7 +23,8 @@ from config import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('user/', include('user.urls', namespace='user')),
+    path('user/', include('users.urls', namespace='users')),
+    path('courses/', include('courses.urls', namespace='courses')),
 ]
 
 if settings.DEBUG:
