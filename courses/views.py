@@ -7,7 +7,6 @@ from courses.serializers import CourseSerializer
 
 # Create your views here.
 class CourseViewSet(viewsets.ViewSet):
+    serializer_class = CourseSerializer
     queryset = Course.objects.all()
-    serializer = CourseSerializer
-
 
