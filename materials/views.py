@@ -7,9 +7,7 @@ from materials.models import Course, Lesson
 from materials.serializers import CourseSerializer, LessonSerializer
 
 
-
-
-class CourseViewSet(viewsets.ViewSet):
+class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
 
@@ -17,6 +15,7 @@ class CourseViewSet(viewsets.ViewSet):
 class LessonListAPIView(ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+
 
 # class CourseListAPIView(ListAPIView):
 #     serializer_class = CourseSerializer
