@@ -5,9 +5,16 @@ null_blank = {'null': True, 'blank': True}
 
 # Create your models here.
 class Course(models.Model):
-    title = models.CharField(max_length=25,)
+    title = models.CharField(max_length=25)
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'course'
+        verbose_name_plural = 'courses'
 
 
 class Lesson(models.Model):
@@ -17,3 +24,10 @@ class Lesson(models.Model):
     video_link = models.URLField(**null_blank)
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'lesson'
+        verbose_name_plural = 'lessons'
