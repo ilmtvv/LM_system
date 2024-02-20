@@ -1,0 +1,62 @@
+[
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "data_of_payment": "2024-02-18T19:40:46.794Z",
+      "course": 1,
+      "lesson": 1,
+      "amount": 11.0,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "data_of_payment": "2024-02-18T19:40:53.951Z",
+      "course": 1,
+      "lesson": 1,
+      "amount": 11.0,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "data_of_payment": "2024-02-18T20:13:30.752Z",
+      "course": 1,
+      "lesson": 1,
+      "amount": 11.0,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "data_of_payment": "2024-02-18T20:59:12.516Z",
+      "course": 1,
+      "lesson": 1,
+      "amount": 11.0,
+      "payment_method": "transfer"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "data_of_payment": "2024-02-18T20:59:16.884Z",
+      "course": 1,
+      "lesson": 1,
+      "amount": 11.0,
+      "payment_method": "transfer"
+    }
+  }
+]
