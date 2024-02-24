@@ -2,6 +2,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticated
 
 from materials.models import Lesson
+from materials.permissions import UserisOwner
 from materials.serializers.lessons import LessonSerializer
 from users.permissions import UserPermissionsManager
 
@@ -22,6 +23,9 @@ class LessonCreateAPIView(CreateAPIView):
     queryset = Lesson.objects.all()
     permission_classes = [IsAuthenticated, ~UserPermissionsManager]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user.pk)
+
 class LessonUpdateAPIView(UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
@@ -30,4 +34,4 @@ class LessonUpdateAPIView(UpdateAPIView):
 class LessonDestroyAPIView(DestroyAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsAuthenticated, ~UserPermissionsManager]
+    permission_classes = [IsAuthenticated, ~UserPermissionsManager & UserisOwner]

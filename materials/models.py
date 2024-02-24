@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 null_blank = {'null': True, 'blank': True}
 
 
@@ -8,6 +10,7 @@ class Course(models.Model):
     title = models.CharField(max_length=25)
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
+    owner = models.IntegerField(default=1)
 
     def __str__(self):
         return f'{self.title}'
@@ -22,6 +25,7 @@ class Lesson(models.Model):
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
     video_link = models.URLField(**null_blank)
+    owner = models.IntegerField(default=1)
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
