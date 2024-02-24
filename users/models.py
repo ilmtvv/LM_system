@@ -13,12 +13,13 @@ class User(AbstractUser):
     city = models.CharField(max_length=25, **null_blank)
     avatar = models.ImageField(upload_to='images/users', **null_blank)
 
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
 
 class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=[])
     data_of_payment = models.DateTimeField(auto_now_add=True)
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING, default=0)
     lesson = models.ForeignKey(Lesson, on_delete=models.DO_NOTHING, default=0)
