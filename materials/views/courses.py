@@ -15,8 +15,9 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user.pk)
 
     def get_permissions(self):
-        if self.action == 'delete' or self.action == 'create':
-            self.permission_classes = [UserPermissionsManager]
-        elif self.action == 'update':
-            self.permission_classes = [UserPermissionsManager & UserisOwner]
+        if self.action == 'destroy' or self.action == 'create':
+            self.permission_classes = [~UserPermissionsManager]
+        elif self.action == 'update' or self.action == 'retrieve':
+            self.permission_classes = [UserPermissionsManager | UserisOwner]
+
         return [permission() for permission in self.permission_classes]

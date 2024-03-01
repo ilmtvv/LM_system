@@ -1,12 +1,14 @@
+from urllib import request
+
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, status, request
+from rest_framework import viewsets, status
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 from users.models import User, Payment
-from users.permissions import UserPermissionsCreate
+from users.permissions import UserPermissionsCreate, UserIsOwnerPay
 from users.serializer import UserSerializer, PaymentSerializer
 
 
@@ -29,14 +31,18 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-
 class PaymentsListAPIView(ListAPIView):
 
     serializer_class = PaymentSerializer
-    queryset = Payment.objects.all()
+    #queryset = Payment.objects.get(user=request.user)
     filter_backends = [OrderingFilter, DjangoFilterBackend,]
     ordering_fields = ('data_of_payment',)
     filterset_fields = ('lesson', 'course', 'payment_method')
+    #permission_classes = [UserIsOwnerPay]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user.pk)
+
+    def get_queryset(self):
+        queryset = Payment.objects.filter(user=self.request.user)
+        return queryset

@@ -9,10 +9,19 @@ class UserPermissionsCreate(permissions.BasePermission):
         else:
             return False
 
+
 class UserPermissionsManager(permissions.BasePermission):
 
     def has_permission(self, request, view):
         if request.user.groups.filter(name='manager').exists():
+            return True
+        else:
+            return False
+
+class UserIsOwnerPay(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+        if request.user == view.user:
             return True
         else:
             return False
