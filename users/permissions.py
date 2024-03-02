@@ -3,11 +3,10 @@ from rest_framework import permissions
 
 class UserPermissionsCreate(permissions.BasePermission):
 
-    def has_permission(self, request, view):
-        if request.method == 'POST':
-            return True
-        else:
-            return False
+    def has_object_permission(self, request, view, obj):
+
+        return request.method == permissions.SAFE_METHODS
+
 
 
 class UserPermissionsManager(permissions.BasePermission):
@@ -20,8 +19,7 @@ class UserPermissionsManager(permissions.BasePermission):
 
 class UserIsOwnerPay(permissions.BasePermission):
 
-    def has_permission(self, request, view):
-        if request.user == view.user:
-            return True
-        else:
-            return False
+    def has_object_permission(self, request, view, obj):
+
+            return request.user == obj.user
+
