@@ -20,7 +20,8 @@ class Command(BaseCommand):
             email='manager@manager.com',
             is_staff=True,
             is_superuser=False,
-            groups=[1,]
+
         )
+        manager.groups.set((1,))
         manager.set_password('123qwe456rty')
         manager.save()
