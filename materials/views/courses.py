@@ -11,7 +11,7 @@ from users.permissions import UserPermissionsManager
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
-
+    permission_classes = [IsAuthenticated, UserisOwner]
     def list(self, request, *args, **kwargs):
 
         if self.request.user.groups.filter(pk=1).exists():
@@ -32,8 +32,10 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         list_of_permission = ('destroy', 'create', 'update', 'retrieve')
-        if self.action in list_of_permission:
-            self.permission_classes = [UserisOwner]
+        if self.action == 'create':
+            self.permission_classes = [IsAuthenticated, ~UserPermissionsManager]
+        if self.action == 'update':
+            self.permission_classes = [IsAuthenticated, UserPermissionsManager | UserisOwner]
 
 
         return [permission() for permission in self.permission_classes]

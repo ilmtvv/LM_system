@@ -28,7 +28,7 @@ class LessonRetrieveAPIView(RetrieveAPIView):
 class LessonCreateAPIView(CreateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsAuthenticated & ~UserPermissionsManager]
+    permission_classes = [IsAuthenticated, ~UserPermissionsManager]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user.pk)
@@ -37,10 +37,10 @@ class LessonCreateAPIView(CreateAPIView):
 class LessonUpdateAPIView(UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsAuthenticated & ~UserPermissionsManager & UserisOwner]
+    permission_classes = [IsAuthenticated, UserPermissionsManager | UserisOwner]
 
 
 class LessonDestroyAPIView(DestroyAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsAuthenticated & UserisOwner & ~UserPermissionsManager]
+    permission_classes = [IsAuthenticated, UserisOwner, ~UserPermissionsManager]

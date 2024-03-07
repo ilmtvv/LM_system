@@ -25,3 +25,11 @@ class Command(BaseCommand):
         manager.groups.set((1,))
         manager.set_password('123qwe456rty')
         manager.save()
+
+        user = User.objects.create(
+            username='user',
+            email='user@user.com',
+
+        )
+        user.set_password('123qwe456rty')
+        user.save()
