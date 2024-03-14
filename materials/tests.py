@@ -1,5 +1,4 @@
 from django.contrib.auth.models import Group
-from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework.reverse import reverse
@@ -50,7 +49,7 @@ class LessonTestCase(APITestCase):
         )
 
 
-    def test_get_lesson_create(self):
+    def test_lesson_create(self):
         lesson = {
             'title': 'testcase2',
             'course': self.course.pk,
@@ -77,7 +76,7 @@ class LessonTestCase(APITestCase):
             )
 
 
-    def test_get_lesson_create_validation(self):
+    def test_lesson_create_validation(self):
         lesson = {
             'title': 'testcase3',
             'course': self.course.pk,
@@ -104,7 +103,7 @@ class LessonTestCase(APITestCase):
             )
 
 
-    def test_get_lesson_patch(self):
+    def test_lesson_patch(self):
         lesson = {
             'title': 'newname',
             'owner': self.user.pk,
@@ -124,7 +123,7 @@ class LessonTestCase(APITestCase):
         )
 
 
-    def test_get_lesson_delete(self):
+    def test_lesson_delete(self):
         responce = self.client.delete(
             reverse('materials:lesson-delete', kwargs={'pk': self.lesson.pk}),
             )
