@@ -25,6 +25,7 @@ urlpatterns = [
     path('materials/', include('materials.urls', namespace='materials')),
     path('users/', include('users.urls', namespace='user')),
     path('groups/', include('groups.urls', namespace='groups')),
+    path('subscriptions/', include('subscription.urls', namespace='subscriptions')),
 
 ]
 
