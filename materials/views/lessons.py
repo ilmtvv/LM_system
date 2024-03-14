@@ -49,4 +49,4 @@ class LessonUpdateAPIView(UpdateAPIView):
 class LessonDestroyAPIView(DestroyAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
-    permission_classes = [IsAuthenticated, UserisOwner, ~UserPermissionsManager]
+    permission_classes = [IsAuthenticated, UserisOwner]
