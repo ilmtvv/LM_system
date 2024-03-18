@@ -21,9 +21,9 @@ class SubscriptionAPIView(APIView):
         course_id = self.request.data.get('course')
         course = get_object_or_404(Course, pk=course_id)
         subs_item = Subscription.objects.all().filter(user=user, course=course)
-        print(subs_item)
+        # print(subs_item)
         if subs_item.exists():
-            print(subs_item.exists())
+            # print(subs_item.exists())
             subs_item.delete()
 
             message = 'subscription delete'
