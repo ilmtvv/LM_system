@@ -11,6 +11,7 @@ class Course(models.Model):
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
     owner = models.IntegerField(default=1)
+    price = models.PositiveIntegerField(null=True, blank=True, )
 
     def __str__(self):
         return f'{self.title}'
@@ -35,3 +36,16 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'lesson'
         verbose_name_plural = 'lessons'
+
+
+class PaymentCourse(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    id_payment_course = models.CharField(max_length=555, **null_blank)
+    url_payment_course = models.URLField(max_length=555, default='')
+
+    def __str__(self):
+        return f'{self.id_payment_course}'
+
+    class Meta:
+        verbose_name = 'payment-course'
+        verbose_name_plural = 'payments-courses'
