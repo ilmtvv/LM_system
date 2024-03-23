@@ -3,7 +3,7 @@ import stripe
 from config.settings import STRIPE_API_KEY
 from materials.models import Course
 
-stripe.api_key = 'sk_test_51OwlwuD6YDI1PfPLy21tsj9vFtQyB94lj8ymzvJBTwxCAakovP0Vp0P90ZtWkltoBxxA9HrLhuriECdFS4wDuUz000ztcLB6jE'
+stripe.api_key = STRIPE_API_KEY
 
 def create_product(pk):
     course = Course.objects.get(pk=pk)
