@@ -55,19 +55,11 @@ class PayCourseCreateAPIView(CreateAPIView):
 
     def perform_create(self, serializer):
         pay = serializer.save()
-        product = create_product(pay.course.pk)
-        id_product = product[0]
-        amount = product[1]
-        pay_course = create_pay_course(id_product, amount)
-        pay_session = (create_pay_session(pay_course))
 
-        pay.id_payment_course = pay_session[0]
-        pay.url_payment_course = pay_session[1]
+        id_product, amount = create_product(pay.course.pk)
+
+        pay_course = create_pay_course(id_product, amount)
+
+        pay.id_payment_course, pay.url_payment_course = create_pay_session(pay_course)
 
         pay.save()
-
-
-
-
-
-
