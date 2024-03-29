@@ -1,13 +1,18 @@
+from celery import shared_task
+from django.core.mail import send_mail
 from rest_framework import viewsets, request
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
+from config.settings import EMAIL_HOST_USER
+from config.tasks import update_notification
 from materials.models import Course, PaymentCourse
 from materials.paginators import MyPagination
 from materials.permissions import UserisOwner
 from materials.serializers.courses import CourseSerializer, PayCourseSerializer
 from materials.utils import create_product, create_pay_course, create_pay_session
+from subscription.models import Subscription
 from users.permissions import UserPermissionsManager
 
 
@@ -15,6 +20,24 @@ class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
     pagination_class = MyPagination
+
+    # def update(self, request, *args, **kwargs):
+    #     pass
+
+    def perform_update(self, serializer):
+        course_id = int(self.kwargs['pk'])
+        #print(course_id)
+        emails = []
+        subs_item = Subscription.objects.all().filter(course=course_id)
+        for email in subs_item:
+            emails.append(email.user.email)
+        #print(emails)
+
+
+        update_notification(emails)
+
+        serializer.save()
+
     def list(self, request, *args, **kwargs):
 
         if self.request.user.groups.filter(pk=1).exists():
