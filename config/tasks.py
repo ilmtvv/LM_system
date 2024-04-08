@@ -19,14 +19,11 @@ def update_notification(recipient_list):
 
 @shared_task
 def active_user():
-    users = User.objects.all()
+
+    current_datetime = datetime.timezone.now()
+    one_month_ago = current_datetime - datetime.timedelta(days=30)
+
+    users = User.objects.filter(last_login__lt=one_month_ago)
     for user in users:
-        time_last_login = user.__dict__['last_login']
-        if time_last_login:
-            time_now = datetime.datetime.now().astimezone(datetime.timezone.utc)
-            if datetime.timedelta(days=31) >= time_now - time_last_login:
-                user.is_active = False
-                user.save()
-            else:
-                user.is_active = True
-                user.save()
+        user.is_active = False
+        user.save()

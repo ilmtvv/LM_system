@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 null_blank = {'null': True, 'blank': True}
 
 
@@ -10,7 +9,7 @@ class Course(models.Model):
     title = models.CharField(max_length=25)
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
-    owner = models.IntegerField(default=1)
+    owner = models.ForeignKey('users.User', on_delete=models.CASCADE, **null_blank)
     price = models.PositiveIntegerField(null=True, blank=True, )
 
     def __str__(self):
@@ -26,7 +25,7 @@ class Lesson(models.Model):
     image = models.ImageField(upload_to='images/study', **null_blank)
     description = models.TextField(**null_blank)
     video_link = models.URLField(**null_blank)
-    owner = models.IntegerField(default=1)
+    owner = models.ForeignKey('users.User', on_delete=models.CASCADE, **null_blank)
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 

@@ -20,4 +20,4 @@ class UserIsUser(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
 
-            return request.user.pk == obj.user_pk
+            return request.user == obj.user_pk

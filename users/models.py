@@ -12,7 +12,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=11, **null_blank)
     city = models.CharField(max_length=25, **null_blank)
     avatar = models.ImageField(upload_to='images/users', **null_blank)
-    user_pk = models.IntegerField(**null_blank)
+    user_pk = models.ForeignKey('self', on_delete=models.SET_NULL, **null_blank)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
