@@ -34,7 +34,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
         password = serializer.data["password"]
         user = User.objects.get(pk=serializer.data["id"])
-        user.user_pk = serializer.data["id"]
+        user.user_pk = user
         user.set_password(password)
         user.save()
 
