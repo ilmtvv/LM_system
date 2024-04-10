@@ -13,8 +13,8 @@ class Command(BaseCommand):
             is_superuser=True
         )
         admin.set_password('123qwe456rty')
+        admin.user_pk = admin
         admin.save()
-
         manager = User.objects.create(
             username='manager',
             email='manager@manager.com',
@@ -24,6 +24,7 @@ class Command(BaseCommand):
         )
         manager.groups.set((1,))
         manager.set_password('123qwe456rty')
+        manager.user_pk = manager
         manager.save()
 
         user = User.objects.create(
@@ -32,4 +33,5 @@ class Command(BaseCommand):
 
         )
         user.set_password('123qwe456rty')
+        user.user_pk = user
         user.save()
