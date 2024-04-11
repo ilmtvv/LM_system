@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #         'NAME': os.getenv('NAME'),
 #         'USER': os.getenv('USER_POSTGRES'),
 #         'PASSWORD': os.getenv('PASSWORD'),
-#         'HOST': os.getenv('HOST'),
+#         # 'HOST': os.getenv('HOST'),
 #     }
 # }
 
