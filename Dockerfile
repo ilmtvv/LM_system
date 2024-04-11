@@ -6,7 +6,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y gcc libjpeg-dev libpq-dev
 
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
 
 COPY ./requirements.txt /code/requirements.txt
 
@@ -19,5 +19,4 @@ COPY . .
 EXPOSE 8000
 
 # Запускаем миграции и само приложение
-CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
-
+# CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
