@@ -47,7 +47,7 @@ services:
   celery-beat:
     build: .
     tty: True
-    command: celery -A my_project beat —loglevel=info
+    command: celery -A config beat -l INFO
     depends_on:
       - redis
       - app
