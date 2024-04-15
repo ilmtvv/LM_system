@@ -18,3 +18,4 @@ Deploy
 12) Docker-compose exec app python manage.py migrate
 13) Chill and send me my money!
 14) and remember RIIIGCRICDDDCa
+15) if you want, if you ci/cd, go to the devops engineer
