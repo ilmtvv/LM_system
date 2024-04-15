@@ -8,12 +8,13 @@ Deploy
 2) Install nginx outside container(spoiler)
 3) Install docker too out
 4) Instal gunicorn out
-5) git clone this guy
-6) create demon gunicorn
-7) run demon
-8) install settings for this guy nginx and run it
-9) check ports
-10) docker-compose build in .
-11) docker up
-12) docker-compose exec app python manage.py migrate
-13) chill and send me my money!
+5) Git clone this guy
+6) Create demon gunicorn
+7) Run demon
+8) Install settings for this guy nginx and run it
+9) Check ports
+10) Docker-compose build in .
+11) Docker up
+12) Docker-compose exec app python manage.py migrate
+13) Chill and send me my money!
+14) and remember RIIIGCRICDDDCa
