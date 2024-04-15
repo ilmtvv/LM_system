@@ -45,6 +45,7 @@ services:
     depends_on:
       - redis
       - app
+      - celery-beat
 
   celery-beat:
     build: .
@@ -53,7 +54,6 @@ services:
     depends_on:
       - redis
       - app
-      - celery
 
 volumes:
   pg_data:
