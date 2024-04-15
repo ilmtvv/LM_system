@@ -4,7 +4,7 @@ The trend towards online learning is developing around the world. But for a web 
 
 Deploy
 
-1) Rub boy linux machine with outside ip
+1) Rub boy linux machine with outside ip, maybe buy cloud? rich bitch
 2) Install nginx outside container(spoiler)
 3) Install docker too out
 4) Instal gunicorn out
