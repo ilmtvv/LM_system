@@ -4,18 +4,14 @@ The trend towards online learning is developing around the world. But for a web 
 
 Deploy
 
-1) Rub boy linux machine with outside ip, maybe buy cloud? rich bitch
-2) Install nginx outside container(spoiler)
-3) Install docker too out
-4) Instal gunicorn out
-5) Git clone this guy
-6) Create demon gunicorn
-7) Run demon
-8) Install settings for this guy nginx and run it
-9) Check ports
-10) Docker-compose build in .
-11) Docker up
-12) Docker-compose exec app python manage.py migrate
-13) Chill and send me my money!
-14) and remember RIIIGCRICDDDCa
-15) if you want, if you ci/cd, go to the devops engineer
+1) Install nginx
+2) Install docker
+3) Instal gunicorn
+4) Git clone
+5) Create demon gunicorn
+6) Run demon
+7) Install settings for nginx
+8) Check ports
+9) Docker-compose build in .
+10) Docker up
+11) Docker-compose exec app python manage.py migrate
